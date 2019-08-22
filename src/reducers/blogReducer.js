@@ -1,7 +1,6 @@
 import blogService from '../services/blogs'
 
 const reducer = (state = [], action) => {
-  console.log('action :', action)
   switch (action.type) {
   case 'INIT_BLOGS':
     return action.data
@@ -10,6 +9,12 @@ const reducer = (state = [], action) => {
   case 'NEW_BLOG':
     return [ ...state, action.data ]
   case 'ADD_LIKE_TO_BLOG':  {
+    const id = action.data.id
+    return state.map(blog =>
+      blog.id !== id ? blog : action.data
+    )
+  }
+  case 'ADD_COMMENT_TO_BLOG': {
     const id = action.data.id
     return state.map(blog =>
       blog.id !== id ? blog : action.data
@@ -68,9 +73,25 @@ export const updateBlog = (blog) => {
   }
 }
 
+export const addCommentToBlog = (blog, comment) => {
+  return async dispatch => {
+    const addComment = {
+      ...blog,
+      comments: blog.comments === null ? comment : blog.comments.concat(comment)
+    }
+    let updatedBlog = await blogService.addComment(addComment)
+
+    dispatch({
+      type: 'ADD_COMMENT_TO_BLOG',
+      data: updatedBlog
+    })
+  }
+}
+
 export const destroyToken = () => {
   return async dispatch => {
     await blogService.destroyToken()
+    window.localStorage.removeItem('loggedBlogappUser')
     dispatch({
       type: 'REMOVED_TOKEN',
     })

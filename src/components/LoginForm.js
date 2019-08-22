@@ -1,11 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { initializeLogin } from '../reducers/loginReducer'
-import { setToken } from '../reducers/blogReducer'
-
-
+import { initializeLogin } from '../reducers/userReducer'
 
 const LoginForm = (props) => {
+
   const handleLogin = (event) => {
     event.preventDefault()
 
@@ -13,9 +11,6 @@ const LoginForm = (props) => {
       username: event.target.username.value,
       password: event.target.password.value
     })
-
-    console.log('props.login :', props.login)
-    props.setToken(props.login.token)
   }
 
   return (
@@ -36,19 +31,12 @@ const LoginForm = (props) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    login: state.login
-  }
-}
-
 const mapDispatchToProps = {
-  initializeLogin,
-  setToken
+  initializeLogin
 }
 
 const ConnectedBlogForm = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(LoginForm)
 

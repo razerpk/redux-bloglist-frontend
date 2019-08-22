@@ -1,4 +1,5 @@
-import loginService from '../services/login'
+/*import loginService from '../services/login'
+import blogService from '../services/blogs'
 
 const reducer = (state = null, action) => {
   console.log('action :', action)
@@ -15,11 +16,12 @@ export const initializeLogin = (nameAndPass) => {
     window.localStorage.setItem(
       'loggedBlogappUser', JSON.stringify(user)
     )
+    await blogService.setToken(user)
     dispatch({
       type: 'LOGIN',
-      data: nameAndPass
+      data: user
     })
   }
 }
 
-export default reducer
+export default reducer*/
