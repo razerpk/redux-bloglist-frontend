@@ -2,7 +2,6 @@ import loginService from '../services/login'
 import blogService from '../services/blogs'
 
 const reducer = (state = null, action) => {
-  console.log('state :', state)
   switch (action.type) {
   case 'LOGIN':
     return action.data

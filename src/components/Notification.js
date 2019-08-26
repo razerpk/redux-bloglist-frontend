@@ -1,19 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Message, Container } from 'semantic-ui-react'
 
 const Notification = (props) => {
 
   let type
   if(props.notification){
-    type = !props.notification.startsWith('you removed')
+    type = !(props.notification.startsWith('you removed') || props.notification.startsWith('incorrect'))
       ? 'success'
       : 'error'
   }
 
   return (
-    <div className={type}>
-      {props.notification}
-    </div>
+    <Container>
+      {(props.notification &&
+        <Message className={type}>
+          {props.notification}
+        </Message>
+      )}
+    </Container>
   )
 }
 

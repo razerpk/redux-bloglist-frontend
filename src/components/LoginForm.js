@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { initializeLogin } from '../reducers/userReducer'
+import { setNotification } from '../reducers/notificationReducer'
+import { Form, Button } from 'semantic-ui-react'
 
 const LoginForm = (props) => {
 
@@ -13,26 +15,32 @@ const LoginForm = (props) => {
     })
   }
 
+  const inputStyle = {
+    width: '60%',
+    border: '2px solid black'
+  }
+
   return (
-    <div className='loginForm'>
+    <div>
       <h2>Log in to application</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          username
-          <input name='username' />
-        </div>
-        <div>
-          password
-          <input type='password' name='password' />
-        </div>
-        <button type="submit">login</button>
-      </form>
+      <Form onSubmit={handleLogin}>
+        <Form.Field>
+          <label>username</label>
+          <input name='username' style={ inputStyle }/>
+        </Form.Field>
+        <Form.Field>
+          <label>password</label>
+          <input type='password' name='password' style={ inputStyle }/>
+        </Form.Field>
+        <Button type="submit">login</Button>
+      </Form>
     </div>
   )
 }
 
 const mapDispatchToProps = {
-  initializeLogin
+  initializeLogin,
+  setNotification
 }
 
 const ConnectedBlogForm = connect(
