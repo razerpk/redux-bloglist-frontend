@@ -26,11 +26,11 @@ const LoginForm = (props) => {
       <Form onSubmit={handleLogin}>
         <Form.Field>
           <label>username</label>
-          <input name='username' style={ inputStyle }/>
+          <input name='username' style={ inputStyle } id='username'/>
         </Form.Field>
         <Form.Field>
           <label>password</label>
-          <input type='password' name='password' style={ inputStyle }/>
+          <input type='password' name='password' id='password' style={ inputStyle }/>
         </Form.Field>
         <Button type="submit">login</Button>
       </Form>

@@ -11,7 +11,7 @@ const BlogSite = (props) => {
 
   return (
     <div className='blogs'>
-      <Togglable buttonLabel="new blog">
+      <Togglable buttonLabel='new blog'>
         <BlogForm />
       </Togglable>
 
@@ -20,7 +20,7 @@ const BlogSite = (props) => {
           {props.blogs.sort((a, b) => b.likes - a.likes).map(blog =>
             <Table.Row key={blog.id}>
               <Table.Cell>
-                <Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
+                <Link to={`/blogs/${blog.id}`} id={blog.title}>{blog.title}</Link>
               </Table.Cell>
             </Table.Row>
           )}

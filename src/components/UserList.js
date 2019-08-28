@@ -24,7 +24,7 @@ const UserList = (props) => {
           {props.users.sort((a,b) => b.blogs.length - a.blogs.length).map(user => {
             return(
               <Table.Row key={user.id}>
-                <Table.Cell><Link to={`/users/${user.id}`}>{user.name}</Link></Table.Cell>
+                <Table.Cell><Link to={`/users/${user.id}`} id={user.name}>{user.name}</Link></Table.Cell>
                 <Table.Cell>{user.blogs.length}</Table.Cell>
               </Table.Row>
             )

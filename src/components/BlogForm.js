@@ -26,15 +26,15 @@ const BlogForm = (props) => {
       <Form onSubmit={addBlog}>
         <Form.Field>
           <label>title:</label>
-          <input name='title'/>
+          <input name='title' id='title'/>
         </Form.Field>
         <Form.Field>
           <label>author:</label>
-          <input name='author'/>
+          <input name='author' id='author'/>
         </Form.Field>
         <Form.Field>
           <label>url:</label>
-          <input name='url'/>
+          <input name='url' id='url'/>
         </Form.Field>
         <div>
           <Button type='submit'>create</Button>

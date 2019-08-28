@@ -22,14 +22,14 @@ const NavMenu = (props) => {
           <Menu.Item link>
             <Link to={'/'}>blogs</Link>
           </Menu.Item>
-          <Menu.Item link>
+          <Menu.Item link id='usersPage'>
             <Link to={'/users'}>users</Link>
           </Menu.Item>
           <Menu.Item>
             {props.user.name} logged in
           </Menu.Item>
           <Menu.Item>
-            <button onClick={logOut}>log out</button>
+            <button onClick={logOut} id='logOut'>log out</button>
           </Menu.Item>
         </Menu>
       </Segment>
